@@ -34,7 +34,8 @@ const uint32_t PROGMEM unicode_map[] = {
     [SNEK]  = 0x1F40D, // 🐍
 };
 
-// NOTE: making the characters Unicode symbols instead of macros would probably have been more elegant, however not all Latex editors support this
+// NOTE: making the characters Unicode symbols instead of macros would probably have been more elegant, however not all Latex editors support this,
+// also the order matters
 enum custom_keycodes {
   //LATEX GREEK
     _TEX_A_= SAFE_RANGE,_TEX_a_, //Alpha
@@ -53,7 +54,7 @@ enum custom_keycodes {
     _TEX_N_, _TEX_n_, //Nu
     _TEX_O_, _TEX_o_, //Omicron
     _TEX_P_, _TEX_p_, //Pi
-    _TEX_Q_, _TEX_q_, // ??
+    // Q ,q
     _TEX_R_, _TEX_r_, //Rho
     _TEX_S_, _TEX_s_, //Sigma
     _TEX_T_, _TEX_t_, //Tau
@@ -63,17 +64,23 @@ enum custom_keycodes {
     _TEX_X_, _TEX_x_, //Chi
     _TEX_Y_, _TEX_y_, //Upsilon
     _TEX_Z_, _TEX_z_, //Zeta
-  //LATEX FUNCTIONS
-    //Environments
+  //LATEX Environments
     _BMAT,
     _MAT,
     _PMAT,
     _VMAT,
     _LCAS,
     _RCAS,
+  //LATEX FUNCTIONS
     //Spacing
     _TEX_SPACE,
     _TEX_QUAD,
+    _TEX_ENT,
+    //Misc
+    _TEX_Q_, _TEX_q_, // ?? , text
+    _TEX_EQ,
+    _TEX_FR,
+    _TEX_OB,_TEX_UB,
     //Arrows
     _UP_AR,
     _LE_AR,
@@ -83,19 +90,10 @@ enum custom_keycodes {
 
 static char *tex_greek_chars[] ={
   "Alpha","alpha","Beta","beta","Psi","psi","Delta","delta","Epsilon","varepsilon","Phi","phi","Gamma","gamma","Eta","eta",
-  "Iota","iota","Xi","xi","Kappa","kappa","Lambda","lambda","Mu","mu","Nu","nu","Omicron","omicron","Pi","pi","x","x","Rho",
+  "Iota","iota","Xi","xi","Kappa","kappa","Lambda","lambda","Mu","mu","Nu","nu","Omicron","omicron","Pi","pi","Rho",
   "rho","Sigma","sigma","Tau","tau","Theta","theta","Omega","omega","x","x","Chi","chi","Upsilon","upsilon","Zeta","zeta"
 };
-static char *tex_functions[] ={
-  //Spacing
-  "space",
-  "quad",
-  //Single Arrows
-  "uarr", 
-  "larr",
-  "darr",
-  "rarr"
-};
+
 static char *tex_environments[] ={
   //Environments
   "bmatrix", // Matrix []
@@ -104,4 +102,21 @@ static char *tex_environments[] ={
   "vmatrix", // Matrix ||
   "cases",   // Cases  {
   "rcases"   // Cases  }
+};
+
+static char *tex_functions[] ={
+  //Spacing
+  "space",
+  "quad",
+  "\\",
+  //Misc
+  "","text{}", 
+  "stackrel{!}{=}",
+  "frac{a}{b}",
+  "overbrace{}^{\\text{}}","underbrace{}^{\\text{}}",
+  //Single Arrows
+  "uarr", 
+  "larr",
+  "darr",
+  "rarr"
 };

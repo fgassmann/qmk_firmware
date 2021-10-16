@@ -62,41 +62,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//TODO Update this
-//      ESC      F1       F2       F3       F4       F5       F6       F7       F8       F9       F10      F11      F12	     Prt           Rotary(Mute)
-//      ~        1        2        3        4        5        6        7        8        9        0         -       (=)	     BackSpc           Del
-//      Tab      Q        W        E        R        T        Y        U        I        O        P        [        ]                          PgUp
-//      Caps     A        S        D        F        G        H        J        K        L        ;        "        #        Enter             PgDn
-//      Sh_L     /        Z        X        C        V        B        N        M        ,        .        ?                 Sh_R     Up       End
-//      Ct_L     Win_L    Alt_L                               SPACE                               Alt_R    FN       Ct_R     Left     Down     Right
-
-/*
- * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐    ┌───────┐
- * │ESC│F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│  PRT  │    | MUTE  |
- * ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───────┤    ├───────┤
- * │ ^ │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ ß │ ´ │  BSPC │    | TO(1) |
- * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤    ├───────┤
- * │ TAB │ Q │ W │ E │ R │ T │ Z │ U │ I │ O │ P │ Ü │ + │ ENT │    |       |
- * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │    ├───────┤
- * │ CAPS │ A │ S │ D │ F │ G │ H │ J │ K │ L │ Ö │ Ä │ # │    │    |       |
- * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┼────┼───────┤
- * │LSFT│ < │ Y │ X │ C │ V │ B │ N │ M │ , │ . │ - │   RSFT   │ UP |       |
- * ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┼────┼───────┤
- * │LCTL│LGUI│LALT│           SPC          │RALT│APP │RCTL│LEFT│DOWN| RIGHT |
- * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┼────┼───────┘
- */
-
 
     [_BASE] = LAYOUT(
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PSCR,          KC_MUTE,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          TO(_TEX_ACTIVE),
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                   TO(_BASE_TEXT),
-        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_F13 , KC_ENT,           TO(_BASE_CODE),
+        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_HASH, KC_ENT,           TO(_BASE_CODE),
         KC_LSFT, KC_BSLS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_DEL,
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_APP,  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
     //Latex
-    //TODO more latex keybindings
     [_TEX_ACTIVE] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          TO(_BASE),
@@ -107,15 +82,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_TEX] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _TEX_q_, _TEX_w_, _TEX_e_, _TEX_r_, _TEX_t_, _TEX_y_, _TEX_u_, _TEX_i_, _TEX_o_, _TEX_p_, _BMAT,   _MAT,                   _______,
-  TO(_TEX_ACTIVE),_TEX_a_,_TEX_s_, _TEX_d_, _TEX_f_, _TEX_g_, _TEX_h_, _TEX_j_, _TEX_k_, _TEX_l_, _______, _______, _______, _______,          _______,
-    OSL(_TEXSH), _______, _TEX_z_, _TEX_x_, _TEX_c_, _TEX_v_, _TEX_b_, _TEX_n_, _TEX_m_, _______, _______, _______,          _______, _UP_AR,  _______,
+        _______, _______, _______, _______, _______, _______, _TEX_UB, _______, _______, _______, _______, _______, _TEX_EQ, _______,          _______,
+        KC_AMPR,  _TEX_q_, _TEX_w_, _TEX_e_, _TEX_r_, _TEX_t_, _TEX_y_, _TEX_u_, _TEX_i_, _TEX_o_, _TEX_p_, _BMAT,   _MAT,                   _______,
+  TO(_TEX_ACTIVE),_TEX_a_,_TEX_s_, _TEX_d_, _TEX_f_, _TEX_g_, _TEX_h_, _TEX_j_, _TEX_k_, _TEX_l_, _______, _______, _______, _TEX_ENT,         _______,
+    OSL(_TEXSH), _______, _TEX_z_, _TEX_x_, _TEX_c_, _TEX_v_, _TEX_b_, _TEX_n_, _TEX_m_, _______, _______, _TEX_FR,          _______, _UP_AR,  _______,
         _______, _______, _______,                            _TEX_SPACE,                         _______, _______, _______, _LE_AR,  _DN_AR,  _RG_AR
     ),
     [_TEXSH] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _PMAT,   _VMAT  , _______, _______, _______,          _______,
+        _______, _______, _______, _______, _______, _______, _TEX_OB, _______, _______, _PMAT,   _VMAT  , _______, _______, _______,          _______,
         _______, _TEX_Q_, _TEX_W_, _TEX_E_, _TEX_R_, _TEX_T_, _TEX_Y_, _TEX_U_, _TEX_I_, _TEX_O_, _TEX_P_, _LCAS,   _RCAS,                   _______,
         _______, _TEX_A_, _TEX_S_, _TEX_D_, _TEX_F_, _TEX_G_, _TEX_H_, _TEX_J_, _TEX_K_, _TEX_L_, _______, _______, _______, _______,          _______,
         TO(_TEX),_______, _TEX_Z_, _TEX_X_, _TEX_C_, _TEX_V_, _TEX_B_, _TEX_N_, _TEX_M_, _______, _______, _______,          _______, _______, _______,
@@ -153,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_MUTE, KC_VOLD, KC_VOLU, _______,   RESET,          _______,
         _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   RESET,          _______,
         _______, _______, RGB_VAI, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
-        _______, _______, RGB_VAD, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+        _______, _______, RGB_VAD, _______, _______, _______, _______, _______, _______, UC_M_LN, _______, _______, _______, _______,          _______,
         _______, _______, _______, RGB_HUI, _______, _______, _______, NK_TOGG, _______, _______, _______, _______,          _______, RGB_MOD, _______,
-        _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
+        _______, UC_M_WI, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
 
 
