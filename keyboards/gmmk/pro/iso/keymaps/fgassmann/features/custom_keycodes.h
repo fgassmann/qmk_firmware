@@ -37,8 +37,11 @@ const uint32_t PROGMEM unicode_map[] = {
 // NOTE: making the characters Unicode symbols instead of macros would probably have been more elegant, however not all Latex editors support this,
 // also the order matters
 enum custom_keycodes {
+  _SNAKECASE = SAFE_RANGE,
+  _CAMELCASE,
+
   //LATEX GREEK
-    _TEX_A_= SAFE_RANGE,_TEX_a_, //Alpha
+    _TEX_A_,_TEX_a_, //Alpha
     _TEX_B_, _TEX_b_,//Beta
     _TEX_C_, _TEX_c_,//Psi
     _TEX_D_, _TEX_d_,//Delta
