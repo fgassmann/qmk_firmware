@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PSCR,          KC_MUTE,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          TO(_TEX_ACTIVE),
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                   TO(_BASE),
-    TO(_TEXT_DE),KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_HASH, KC_ENT,           TO(_BASE_CODE),
+    OSL(_TEXT_DE),KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_HASH, KC_ENT,           TO(_BASE_CODE),
         KC_LSFT, KC_BSLS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   MO(_KYBS),
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, KC_APP,  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          X(SNEK),
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          TO(_BASE),
         _______, _______, _______, X(_EU),  _______,_______,_______,XP(_ue,_UE),_______,XP(_oe,_OE),_______,_______,_______,                   TO(_BASE_TEXT),
-  TO(_BASE_TEXT),XP(_ae,_AE),X(_sz),_______,_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          TO(_BASE_CODE),
+        _______,XP(_ae,_AE),X(_sz),_______,_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          TO(_BASE_CODE),
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, MO(_KYBS),
         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______, _______
     ),
