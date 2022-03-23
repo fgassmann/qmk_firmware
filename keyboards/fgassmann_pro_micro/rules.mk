@@ -19,3 +19,10 @@ NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
+POINTING_DEVICE_ENABLE = yes
+CONSOLE_ENABLE = yes
+SRC += analog.c
+OLED_ENABLE = yes
+OLED_DRIVER = SSD1306
+
+QUANTUM_LIB_SRC += i2c_master.c
