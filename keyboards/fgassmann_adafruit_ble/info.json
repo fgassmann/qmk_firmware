@@ -1,0 +1,19 @@
+{
+    "keyboard_name": "fgassmann_adafruit_ble",
+    "url": "",
+    "maintainer": "Florian Gassmann",
+    "matrix_pins": {
+        "direct": [
+            ["F5", "F4", "F1"]
+        ]
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"label": "k00", "x": 0, "y": 0},
+                {"label": "k01", "x": 1, "y": 0},
+                {"label": "k02", "x": 2, "y": 0}
+            ]
+        }
+    }
+}
