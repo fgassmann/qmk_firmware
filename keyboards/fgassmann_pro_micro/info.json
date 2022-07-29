@@ -2,12 +2,18 @@
     "keyboard_name": "fgassmann_pro_micro",
     "url": "",
     "maintainer": "Florian Gassmann",
+    "matrix_pins": {
+        "direct": [
+            ["B6","B2","B3","B1"]
+        ]
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
                 {"label": "k00", "x": 0, "y": 0},
                 {"label": "k01", "x": 1, "y": 0},
-                {"label": "k02", "x": 2, "y": 0}
+                {"label": "k02", "x": 2, "y": 0},
+                {"label": "k03", "x": 3, "y": 0}
             ]
         }
     }

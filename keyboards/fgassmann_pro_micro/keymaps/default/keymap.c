@@ -76,7 +76,7 @@ enum layer_names {
     _BASE,
     _FN
 };
-
+static uint8_t f22_tracker;
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
     QMKBEST = SAFE_RANGE,
@@ -87,10 +87,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_BASE] = LAYOUT(
-        KC_A,    _KC_DBG,    MO(_FN)
+        KC_A,  KC_B  ,_KC_DBG,    MO(_FN)
     ),
     [_FN] = LAYOUT(
-        QMKBEST, QMKURL,  _______
+        QMKBEST, QMKURL,  _______,_______
     )
 };
 
@@ -116,38 +116,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case _KC_DBG:
             if (record->event.pressed) {
 
-            dprintf("changing light\n");
-            i2c_status_t i2c_status = i2c_start(PCF8575_ADDR, I2C_TIMEOUT);
+                scan_i2c();
 
-            if (i2c_status == I2C_STATUS_ERROR){dprintf("error init\n");}
-            if (i2c_status == I2C_STATUS_TIMEOUT){dprintf("timeout init\n");}
-
-            if (out_high){
-                uint8_t all_low = 0;
-                i2c_status = i2c_transmit(PCF8575_ADDR, &all_low, 1, I2C_TIMEOUT);
-                out_high =false;
-            }
-            else{
-                uint8_t all_high = 0b11111111;
-                i2c_status = i2c_transmit(PCF8575_ADDR, &all_high, 1, I2C_TIMEOUT);
-                out_high =true;
-            }
-            if (i2c_status == I2C_STATUS_ERROR){dprintf("error init\n");}
-            if (i2c_status == I2C_STATUS_TIMEOUT){dprintf("timeout init\n");}
-
-            i2c_stop();
-            dprintf("Send to PCF8575 (%d) \n", i2c_status);
-
-
-            } else {
-                //scan_i2c();
-            }
+            } else {}
+        case KC_A ... KC_F21: //notice how it skips over F22
+        case KC_F23 ... KC_EXSEL: //exsel is the last one before the modifier keys
+        if (record->event.pressed) {
+            register_code(KC_F22); //this means to send F22 down
+            f22_tracker++;
+            register_code(keycode);
+            return false;
+        }
+        break;
 
     }
     return true;
 
 }
+void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_A ... KC_F21: //notice how it skips over F22
+        case KC_F23 ... KC_EXSEL: //exsel is the last one before the modifier keys
+            if (!record->event.pressed) {
+                f22_tracker--;
+                if (!f22_tracker) {
+                    unregister_code(KC_F22); //this means to send F22 up
+                }
+            }
+            break;
+    }
+}
 
+void tap_modified_key(uint16_t keycode,uint16_t modifier){
+    register_code(modifier);
+    tap_code_delay(keycode, 5);
+    unregister_code(modifier);
+
+}
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder */
@@ -157,9 +162,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             tap_code_delay(KC_VOLD, 10);
         }
     }
+    else if(index ==1 || index == 2 || index == 3){
+        if (clockwise) {
+            tap_modified_key(KC_A+(2*(index-1)),KC_F22);
+        } else {
+            tap_modified_key(KC_B+(2*(index-1)), KC_F22);
+        }
+    }
     return false;
 }
-
 
 #ifdef OLED_ENABLE
 void oled_task_user(void) {
