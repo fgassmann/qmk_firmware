@@ -1,4 +1,4 @@
-/* Copyright 2021 Glorious, LLC <salman@pcgamingrace.com>
+/* Copyright 20700 Glorious, LLC <salman@pcgamingrace.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ enum custom_keycodes {
     _UP_AR,
     _LE_AR,
     _DN_AR,
-    _RG_AR
+    _RG_AR,
 };
 
 static char *tex_greek_chars[] ={
